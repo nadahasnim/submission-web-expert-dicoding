@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Kumpulan Restoran Terbaik Di Seluruh Indonesia Temukan 1000+ rekomendasi restoran terbaik di seluruh penjuru indonesia"
+    />
     <title>Restopedia | Restaurant Catalog</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css"> -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Yellowtail&display=swap"
@@ -13,19 +16,37 @@
     />
   </head>
   <body>
-    <a href="#maincontent" tabindex="1" class="skip-link">Menuju ke konten</a>
+    <a
+      href="#maincontent"
+      aria-label="skip-to-content"
+      tabindex="0"
+      class="skip-link"
+      >Menuju ke konten</a
+    >
     <header class="header">
       <div class="header__inner">
         <h1 class="header__title">Restopedia</h1>
       </div>
-      <a id="menu" tabindex="2" class="header__menu">☰</a>
+      <button id="menu" aria-label="navigation-menu" class="header__menu">
+        ☰
+      </button>
     </header>
     <nav id="drawer" class="nav">
       <ul class="nav__list">
-        <li class="nav__item"><a href="http://localhost:8080">Home</a></li>
-        <li class="nav__item"><a href="#">Favourite</a></li>
         <li class="nav__item">
-          <a href="https://github.com/nadahasnim" target="_blank">About Us</a>
+          <a aria-label="nav-home" href="http://localhost:8080">Home</a>
+        </li>
+        <li class="nav__item">
+          <a aria-label="nav-favourite" href="#">Favourite</a>
+        </li>
+        <li class="nav__item">
+          <a
+            aria-label="nav-about-us"
+            rel="noreferrer"
+            href="https://github.com/nadahasnim"
+            target="_blank"
+            >About Us</a
+          >
         </li>
       </ul>
     </nav>
@@ -44,19 +65,12 @@
       <section class="content">
         <div class="latest">
           <h1 class="latest__label">Explore Restaurant</h1>
-          <div class="posts" id="posts">
-            <!--content will be rendered here  -->
-          </div>
+          <div class="posts" id="posts"></div>
         </div>
       </section>
     </main>
     <footer>
       <p>Copyright &copy; 2020 - Restopedia</p>
-      <!-- <ul>
-        <li><a href="#">Help</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul> -->
     </footer>
   </body>
 </html>
