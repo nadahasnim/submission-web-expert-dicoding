@@ -138,10 +138,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .headline__content {
+    margin-top: 0px;
+    padding-top: 0px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
   main {
     max-width: 1200px;
+  }
+
+  .headline__content {
+    margin-top: 50px;
   }
 }

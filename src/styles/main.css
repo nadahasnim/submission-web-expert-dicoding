@@ -62,7 +62,6 @@ a {
   text-decoration: none;
   min-width: 44px;
   min-height: 44px;
-  border: none;
   background-color: #fff;
   transition: 0.3s ease-in-out;
 }
@@ -186,6 +185,7 @@ main {
 
 .headline__figure img {
   width: 100%;
+  border-radius: 8px;
 }
 
 .headline__figure figcaption {
@@ -208,15 +208,17 @@ main {
 
 .headline__description {
   font-size: 12px;
-  margin-top: 12px;
+  margin: 12px auto;
 }
 
 .headline__button {
+  min-height: 44px;
+  min-width: 44px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   margin-top: 24px;
   cursor: pointer;
-  padding: 8px 16px;
+  padding: 11px 22px;
   color: white;
   border: none;
   border-radius: 5px;
