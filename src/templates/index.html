@@ -27,17 +27,17 @@
       <div class="header__inner">
         <h1 class="header__title">Restopedia</h1>
       </div>
-      <a id="menu" href="#" aria-label="navigation-menu" class="header__menu">
+      <a id="menu" aria-label="navigation-menu" class="header__menu">
         ☰
       </a>
     </header>
     <nav id="drawer" class="nav">
       <ul class="nav__list">
         <li class="nav__item">
-          <a aria-label="nav-home" href="index.html">Home</a>
+          <a aria-label="nav-home" href="#/home">Home</a>
         </li>
         <li class="nav__item">
-          <a aria-label="nav-favourite" href="#">Favourite</a>
+          <a aria-label="nav-favourite" href="#/favorite">Favourite</a>
         </li>
         <li class="nav__item">
           <a
@@ -47,33 +47,48 @@
             target="_blank"
             >About Us</a
           >
-        </li>        
+        </li>
       </ul>
     </nav>
-    <div class="hero">
-      <div class="hero__inner">
-        <h1 class="hero__title">
-          Kumpulan Restoran Terbaik Di Seluruh Indonesia
-        </h1>
-        <p class="hero__tagline">
-          Temukan 1000+ rekomendasi restoran terbaik di seluruh penjuru
-          indonesia
-        </p>
-        <div class="hero__search">
-          <input class="hero__searchbox" type="text" name="search" id="searchRestaurant" placeholder="Cari lebih dari 1000+ restoran ...">
-          <button class="hero__searchbutton" type="button" name="searchButton" aria-label="button-cari">Cari</button>
+    <div id="app">
+      <!-- <div class="hero">
+        <div class="hero__inner">
+          <h1 class="hero__title">
+            Kumpulan Restoran Terbaik Di Seluruh Indonesia
+          </h1>
+          <p class="hero__tagline">
+            Temukan 1000+ rekomendasi restoran terbaik di seluruh penjuru
+            indonesia
+          </p>
+          <div class="hero__search">
+            <input
+              class="hero__searchbox"
+              type="text"
+              name="search"
+              id="searchRestaurant"
+              placeholder="Cari lebih dari 1000+ restoran ..."
+            />
+            <button
+              class="hero__searchbutton"
+              type="button"
+              name="searchButton"
+              aria-label="button-cari"
+            >
+              Cari
+            </button>
+          </div>
         </div>
       </div>
+      <main id="maincontent">
+        <section class="content">
+          <article class="headline" id="headline"></article>
+          <div class="latest">
+            <h1 class="latest__label">Explore Restaurant</h1>
+            <div class="posts" id="posts"></div>
+          </div>
+        </section>
+      </main> -->
     </div>
-    <main id="maincontent">
-      <section class="content">
-        <article class="headline" id="headline"></article>
-        <div class="latest">
-          <h1 class="latest__label">Explore Restaurant</h1>
-          <div class="posts" id="posts"></div>
-        </div>
-      </section>
-    </main>
     <footer>
       <p>Copyright &copy; 2020 - Restopedia</p>
     </footer>
