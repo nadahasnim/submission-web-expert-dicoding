@@ -71,9 +71,27 @@
     margin: 0.5em 0.25em;
     font-size: 14px;
   }
+
+  .hero__search {
+    width: 90%;
+    margin: 0.5em auto;
+  }
+
+  .hero__searchbox {
+    font-size: 14px;
+  }
+
+  .hero__searchbutton {
+    font-size: 14px;;
+  }
 }
 
 @media screen and (min-width: 455px) {
+  .hero__search {
+    width: 90%;
+    margin: 0.5em auto;
+  }
+
   .headline__content {
     padding: 16px 16px;
   }
@@ -88,12 +106,22 @@
 }
 
 @media screen and (min-width: 576px) {
+  .hero__search {
+    width: 90%;
+    margin: 0.5em auto;
+  }
+
   .header__menu {
     display: none;
   }
 }
 
 @media screen and (min-width: 650px) {
+  .hero__search {
+    width: 90%;
+    margin: 0.5em auto;
+  }
+  
   .headline__content {
     margin: 0 auto;
     max-width: 650px;
@@ -118,6 +146,11 @@
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
     grid-row-gap: 16px;
+  }
+
+  .hero__search {
+    width: 90%;
+    margin: 0.5em auto;
   }
 }
 
