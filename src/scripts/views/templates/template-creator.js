@@ -38,7 +38,7 @@ const createRestaurantItemTemplate = (restaurant) => {
           <p class="post-item__rating">Rating:</p>
           <p class="post-item__rating_value">${restaurant.rating}</p>
           <h1 class="post-item__title">
-            <a aria-label="${restaurant.name}" href="#">${restaurant.name}</a>
+            <a aria-label="${restaurant.name}" href="#/detail/${restaurant.id}">${restaurant.name}</a>
           </h1>
           <p class="post-item__description">
             ${description}
