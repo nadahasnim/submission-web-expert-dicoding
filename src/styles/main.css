@@ -13,12 +13,14 @@ html {
 }
 
 body {
+  background-color: #fcfcfc;
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   color: #424242;
 }
 
-input, button {
+input,
+button {
   font-family: "Open Sans", sans-serif;
 }
 
@@ -33,6 +35,7 @@ a {
 */
 
 .header {
+  background-color: white;
   min-height: 56px;
   transition: min-height 0.3s;
 }
@@ -45,6 +48,7 @@ a {
 }
 
 .header__title {
+  cursor: pointer;
   font-family: "Yellowtail", cursive;
   font-weight: 300;
   font-size: 4em;
@@ -80,10 +84,12 @@ a {
 */
 
 .nav {
+  background-color: white;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
 }
 
 .nav__list {
@@ -127,8 +133,7 @@ a {
   width: 100%;
   text-align: center;
   background-image: url("../public/images/heros/hero-image_1.jpg");
-  background-position: center;
-  background-color: green;
+  background-position: center;  
 }
 
 .hero::after {
@@ -254,22 +259,25 @@ main {
 }
 
 .headline__button {
+  display: inline-block;
+  text-decoration: none;
   min-height: 44px;
   min-width: 44px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   margin-top: 24px;
+  line-height: 24px;
   cursor: pointer;
   padding: 11px 22px;
   color: white;
   border: none;
   border-radius: 5px;
-  background-color: #2c3e50;
-  transition: opacity 0.3s;
+  background-color: #212121;
+  transition: 0.3s ease-in-out;
 }
 
 .headline__button:hover {
-  opacity: 0.8;
+  background-color: #111111;
 }
 
 /*
@@ -308,6 +316,7 @@ main {
 */
 
 .post-item {
+  background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 100%;
   border-radius: 5px;
@@ -459,4 +468,206 @@ footer p:hover {
 .skip-link:focus {
   top: 5px;
   left: 5px;
+}
+
+/* detail restaurant */
+.detail-container {
+  font-size: 14px;
+  line-height: 1.8;
+  padding-top: 36px;
+  padding-bottom: 64px;
+  padding-left: 24px;
+  padding-right: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  margin: auto;
+  max-width: 1200px;
+}
+
+.detail-content {
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.detail-head img {
+  border-radius: 8px;
+  width: 100%;
+}
+
+.detail-body {
+  margin-top: 10px;
+}
+
+.detail-body hr {
+  opacity: 0.3;
+}
+
+.detail-body-data {
+  font-weight: bold;
+}
+
+.menu-separator {
+  margin: 10px 0;
+}
+
+.detail-menu-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.detail-menu-container ul {
+  list-style-position: inside;
+}
+
+.review-container {
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  margin-top: 10px;
+}
+
+.review-list {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.review-item {
+  border-radius: 5px;
+  background-color: #eee;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.review-item .customer-name {
+  font-weight: bold;
+  color: salmon;
+}
+
+.review-date {
+  font-size: 10px;
+  font-weight: lighter;
+  color: #424242;
+}
+
+.side-container {
+  padding: 1rem;
+  margin-left: 10px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+/* restaurant side item */
+.restaurant-item {
+  display: grid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding-bottom: 10px;
+  grid-template-columns: 1fr 2fr;
+}
+
+.restaurant-figure {
+  margin-right: 10px;
+  max-height: 100px;
+}
+
+.restaurant-figure img {
+  border-radius: 8px;
+  width: 100%;
+  max-height: 75px;
+  transition: opacity 0.3s;
+}
+
+.restaurant-figure img:hover {
+  opacity: 0.8;
+}
+
+.restaurant-aside-detail a {
+  color: #424242;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+
+.restaurant-aside-detail a:hover {
+  color: #ffea00;
+}
+
+/* like */
+.like {
+  font-size: 18px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background-color: #ffea00;
+  color: white;
+  border: 0;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* breadcrumb */
+/* Style the list */
+.breadcrumb-container {
+  background-color: #eeeeee;
+}
+
+ul.breadcrumb {
+  margin: auto;
+  max-width: 1000px;
+  padding: 10px 16px;
+  list-style: none;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+  display: inline;
+  font-size: 14px;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+  color: salmon;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+  color: rgb(194, 69, 55);
+}
+
+.error-container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+a.back-to-home {
+  display: inline-block;
+  vertical-align: middle;  
+  padding: 10px 15px;
+  min-width: 44px;
+  min-height: 44px;
+  color: salmon;
+  text-decoration: none;
 }

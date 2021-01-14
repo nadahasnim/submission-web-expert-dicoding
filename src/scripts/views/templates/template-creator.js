@@ -1,25 +1,81 @@
 import CONFIG from '../../globals/config';
 import SummaryHelper from '../../utils/summary-helper';
 
-const createRestaurantDetailTemplate = (movie) => `
-    <h2 class="movie__title">${movie.title}</h2>
-    <img class="movie__poster" src="${CONFIG.BASE_IMAGE_URL + movie.poster_path}" alt="${movie.title}" />
-    <div class="movie__info">
-    <h3>Information</h3>
-    <h4>Tagline</h4>
-    <p>${movie.tagline}</p>
-    <h4>Release Date</h4>
-    <p>${movie.release_date}</p>
-    <h4>Duration</h4>
-    <p>${movie.runtime} minutes</p>
-    <h4>Rating</h4>
-    <p>${movie.vote_average}</p>
+const createRestaurantDetailTemplate = (restaurant) => `
+  <article class="detail-content">
+    <div class="detail-head">
+      <img alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}" />
+      <h2>${restaurant.name}</h2>              
     </div>
-    <div class="movie__overview">
-    <h3>Overview</h3>
-    <p>${movie.overview}</p>
+    <div class="detail-body">
+      <p class="detail-body-data">Rating: ${restaurant.rating}</p>    
+      <p class="detail-body-data" id="category">Category: </p>    
+      <p class="detail-body-data">City: ${restaurant.city}</p>
+      <p class="detail-body-data">Address: ${restaurant.address}</p>
+      <p class="detail-body-data">Description:</p>
+      <p>${restaurant.description}</p>
+      <hr class="menu-separator">
+      <div class="detail-menu-container">
+        <div class="menu-food">
+          <p class="detail-body-data">Foods:</p>
+          <ul id="food-list">                        
+          </ul>
+        </div>            
+        <div class="menu-drinks">
+          <p class="detail-body-data">Drinks:</p>
+          <ul id="drink-list">            
+          </ul>
+        </div>
+      </div>
     </div>
+  </article>
+  `;
+
+const createReviewCustomerContainer = (customerReviews) => `
+<section class="review-container">              
+  <h3>Customer Reviews (${customerReviews.length})</h3>
+    <div class="review-list" id="review-list">                
+  </div>
+</section>
 `;
+
+const createReviewItem = (review) => `
+  <div class="review-item">
+    <p class="customer-name">${review.name}</p>
+    <p class="review-date">on: ${review.date}</p>
+    <p>${review.review}</p>
+  </div>   
+`;
+
+const createRestaurantListAside = () => `
+  <aside class="side-container" id="aside-restaurant-list">
+    <h3 class="">Another Restaurant</h3>                            
+  </aside>
+`;
+
+const createRestaurantListItem = (restaurant) => {
+  const description = SummaryHelper.createSummary(restaurant.description, 50);
+
+  return `
+  <div class="restaurant-item">
+    <div class="restaurant-figure">
+      <a href="#/detail/${restaurant.id}">
+        <img alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" />
+      </a>
+    </div>
+    <div class="restaurant-aside-detail">
+      <a href="#/detail/${restaurant.id}">${restaurant.name}</a>
+      <p>${description}</p>                  
+    </div>                
+  </div>    
+`;
+};
+
+const createCategoryItem = (category) => `${category.name}`;
+
+const createFoodItem = (food) => `<li>${food.name}</li>`;
+
+const createDrinkItem = (drink) => `<li>${drink.name}</li>`;
 
 const createRestaurantItemTemplate = (restaurant) => {
   const description = SummaryHelper.createSummary(restaurant.description, 250);
@@ -63,7 +119,7 @@ const createHeadlineItemTemplate = (restaurant) => {
       <p class="headline__description">
           ${description}
       </p>
-      <button aria-label="headline-read-more" class="headline__button">Read More</button>
+      <a aria-label="headline-read-more" href="#/detail/${restaurant.id}" class="headline__button">Read More</a>
     </div>
     `;
 };
@@ -80,7 +136,23 @@ const createLikedButtonTemplate = () => `
   </button>
 `;
 
+const create404Error = () => `
+  <div class="error-container">
+    <h2 class="error-text">Error 404 Not Found</h2>
+    <p>Content you search for cannot be found.</p>
+    <a class="back-to-home" href="#/home" aria-label="back-to-home">Back to Home</a>
+  </div>
+`;
+
 export {
+  create404Error,
+  createRestaurantListAside,
+  createRestaurantListItem,
+  createReviewItem,
+  createReviewCustomerContainer,
+  createCategoryItem,
+  createDrinkItem,
+  createFoodItem,
   createRestaurantItemTemplate,
   createHeadlineItemTemplate,
   createRestaurantDetailTemplate,
