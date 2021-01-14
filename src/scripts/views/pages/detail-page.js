@@ -37,7 +37,7 @@ const DetailPage = {
       const restaurant = await RestaurantApiSource.detailRestaurant(url.id);
       const restaurants = await RestaurantApiSource.listRestaurants();
       const { categories, customerReviews } = restaurant;
-      const { foods, drinks } = restaurant.menus;      
+      const { foods, drinks } = restaurant.menus;
 
       // render detail
       const detailContainer = document.querySelector('.detail-container');
