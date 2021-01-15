@@ -671,3 +671,48 @@ a.back-to-home {
   color: salmon;
   text-decoration: none;
 }
+
+/* add review */
+.add-review-container {
+  
+}
+
+.add-review-container > .form-input, .add-review-container > .textarea-input {
+  font-family: "Open Sans", sans-serif;
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #424242;
+  padding: 12px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease-in-out;
+}
+
+.add-review-container > .form-input:focus, .add-review-container > .textarea-input:focus {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  border: none;
+  padding: 12px 0;
+  text-decoration: none;
+  border-bottom: 1px solid #f0d800;
+  transition: 0.3s ease-in-out;
+}
+
+.add-review-container > .button-input {
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #212121;
+  padding: 10px 15px;
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.add-review-container > .button-input:hover {
+  background-color: #000;
+}

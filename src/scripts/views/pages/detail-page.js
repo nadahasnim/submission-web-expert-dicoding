@@ -1,5 +1,6 @@
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
+import AddReviewInitiator from '../../utils/add-review-initiator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 import {
   createFoodItem,
@@ -7,7 +8,6 @@ import {
   createCategoryItem,
   createDrinkItem,
   createReviewCustomerContainer,
-  createReviewItem,
   createRestaurantListAside,
   createRestaurantListItem,
   create404Error,
@@ -72,10 +72,10 @@ const DetailPage = {
       detailContainer.innerHTML += createReviewCustomerContainer(customerReviews);
 
       // render review item
-      const reviewList = document.querySelector('#review-list');
-      customerReviews.forEach((review) => {
-        reviewList.innerHTML += createReviewItem(review);
-      });
+      // const reviewList = document.querySelector('#review-list');
+      // customerReviews.forEach((review) => {
+      //   reviewList.innerHTML += createReviewItem(review);
+      // });
 
       // render recomended restaurant
       detailContainer.innerHTML += createRestaurantListAside();
@@ -97,6 +97,14 @@ const DetailPage = {
       const detailLink = document.querySelector('#detailLink');
       detailLink.href = `#/detail/${restaurant.id}`;
       detailLink.innerHTML = restaurant.name;
+
+      AddReviewInitiator.init({
+        reviewButton: document.querySelector('#button-review'),
+        inputName: document.querySelector('#name-input'),
+        inputReview: document.querySelector('#review-input'),
+        reviewListContainer: document.querySelector('#review-list'),
+        id: url.id,
+      });
 
       LikeButtonInitiator.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),

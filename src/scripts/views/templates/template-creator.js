@@ -33,9 +33,16 @@ const createRestaurantDetailTemplate = (restaurant) => `
 
 const createReviewCustomerContainer = (customerReviews) => `
 <section class="review-container">              
-  <h3>Customer Reviews (${customerReviews.length})</h3>
-    <div class="review-list" id="review-list">                
+<div class="add-review-container">
+  <h3>Add Review</h3>
+  <label for="name-input">Name</label>
+  <input class="form-input" placeholder="Enter your name" id="name-input" name="name" type="text" />
+  <label for="review-input">Review</label>
+  <textarea class="textarea-input" placeholder="Enter your review" id="review-input" name="review" type="text" rows="3"></textarea>
+  <button type="button" class="button-input" name="send-review" id="button-review">Submit Review</button>
   </div>
+  <h3 id="countReview">Customer Reviews (${customerReviews.length})</h3>
+  <div class="review-list" id="review-list"></div>
 </section>
 `;
 
