@@ -24,6 +24,8 @@ const AddReviewInitiator = {
 
   async _renderReviewList() {
     this._reviewListContainer.innerHTML = '';
+    this._inputName.value = '';
+    this._inputReview.value = '';
 
     this._reviews.forEach((review) => {
       this._reviewListContainer.innerHTML += createReviewItem(review);

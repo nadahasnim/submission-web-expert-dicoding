@@ -71,12 +71,6 @@ const DetailPage = {
       // render review container
       detailContainer.innerHTML += createReviewCustomerContainer(customerReviews);
 
-      // render review item
-      // const reviewList = document.querySelector('#review-list');
-      // customerReviews.forEach((review) => {
-      //   reviewList.innerHTML += createReviewItem(review);
-      // });
-
       // render recomended restaurant
       detailContainer.innerHTML += createRestaurantListAside();
 

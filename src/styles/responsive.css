@@ -116,6 +116,12 @@
     grid-row-start: 3;
     grid-row-end: 4;
   }
+
+  /* menu */
+  .detail-menu-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 
 @media screen and (min-width: 455px) {
