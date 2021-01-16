@@ -2,6 +2,7 @@ import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import AddReviewInitiator from '../../utils/add-review-initiator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LoadingIndicator from '../../utils/loading-indicator-initiator';
 import {
   createFoodItem,
   createRestaurantDetailTemplate,
@@ -34,6 +35,8 @@ const DetailPage = {
     // Fungsi ini akan dipanggil setelah render()
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     try {
+      const content = document.querySelector('#maincontent');
+      LoadingIndicator.init(content);
       const restaurant = await RestaurantApiSource.detailRestaurant(url.id);
       const restaurants = await RestaurantApiSource.listRestaurants();
       const { categories, customerReviews } = restaurant;
@@ -110,6 +113,7 @@ const DetailPage = {
           vote_average: restaurant.rating,
         },
       });
+      LoadingIndicator.removeLoading();
     } catch (error) {
       // render detail
       const detailContainer = document.querySelector('.detail-container');

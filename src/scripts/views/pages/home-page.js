@@ -1,4 +1,5 @@
 import RestaurantApiSource from '../../data/restaurantapi-source';
+import LoadingIndicator from '../../utils/loading-indicator-initiator';
 import SearchBoxInitiator from '../../utils/search-box-initiator';
 import { createHeadlineItemTemplate, createRestaurantItemTemplate } from '../templates/template-creator';
 
@@ -47,6 +48,8 @@ const HomePage = {
   },
 
   async afterRender() {
+    const content = document.querySelector('.content');
+    LoadingIndicator.init(content);
     const restaurants = await RestaurantApiSource.listRestaurants();
     const headlineContainer = document.querySelector('#headline');
     const postContainer = document.querySelector('#posts');
@@ -61,6 +64,8 @@ const HomePage = {
       searchBox: document.querySelector('#searchRestaurant'),
       searchButton: document.querySelector('#searchButton'),
     });
+
+    LoadingIndicator.removeLoading();
   },
 };
 

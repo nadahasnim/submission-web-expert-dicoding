@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
+import LoadingIndicator from '../../utils/loading-indicator-initiator';
 import SearchBoxInitiator from '../../utils/search-box-initiator';
 import { createRestaurantItemTemplate } from '../templates/template-creator';
 
@@ -38,12 +40,14 @@ const SearchPage = {
 
   async afterRender() {
     // Fungsi ini akan dipanggil setelah render()
+    const content = document.querySelector('.content');
+    LoadingIndicator.init(content);
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurants = await RestaurantApiSource.searchRestaurant(url.id);
+    const postContainer = document.querySelector('#posts');
 
     const searchTitle = document.querySelector('.search_label');
     searchTitle.innerHTML = `Search results for "${url.id}", found ${restaurants.length} item`;
-    const postContainer = document.querySelector('#posts');
 
     restaurants.forEach((restaurant) => {
       postContainer.innerHTML += createRestaurantItemTemplate(restaurant);
@@ -53,7 +57,10 @@ const SearchPage = {
       searchBox: document.querySelector('#searchRestaurant'),
       searchButton: document.querySelector('#searchButton'),
     });
+
+    LoadingIndicator.removeLoading();
   },
+
 };
 
 export default SearchPage;
