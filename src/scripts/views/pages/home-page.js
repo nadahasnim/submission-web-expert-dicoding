@@ -1,4 +1,5 @@
 import RestaurantApiSource from '../../data/restaurantapi-source';
+import SearchBoxInitiator from '../../utils/search-box-initiator';
 import { createHeadlineItemTemplate, createRestaurantItemTemplate } from '../templates/template-creator';
 
 const HomePage = {
@@ -14,21 +15,22 @@ const HomePage = {
             indonesia
             </p>
             <div class="hero__search">
-            <input
-                class="hero__searchbox"
-                type="text"
-                name="search"
-                id="searchRestaurant"
-                placeholder="Cari lebih dari 1000+ restoran ..."
-            />
-            <button
-                class="hero__searchbutton"
-                type="button"
-                name="searchButton"
-                aria-label="button-cari"
-            >
-                Cari
-            </button>
+              <input
+                  class="hero__searchbox"
+                  type="text"
+                  name="search"
+                  id="searchRestaurant"
+                  placeholder="Cari lebih dari 1000+ restoran ..."
+              />
+              <button
+                  id="searchButton"
+                  class="hero__searchbutton"
+                  type="button"
+                  name="searchButton"
+                  aria-label="button-cari"
+              >
+                  Cari
+              </button>
             </div>
         </div>
     </div>
@@ -54,6 +56,11 @@ const HomePage = {
     });
 
     headlineContainer.innerHTML = createHeadlineItemTemplate(restaurants[0]);
+
+    SearchBoxInitiator.init({
+      searchBox: document.querySelector('#searchRestaurant'),
+      searchButton: document.querySelector('#searchButton'),
+    });
   },
 };
 

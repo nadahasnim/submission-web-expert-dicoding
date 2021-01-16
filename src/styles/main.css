@@ -207,6 +207,15 @@ a {
   background: rgb(199, 179, 0);
 }
 
+.search-background {  
+  background-color: #eee;
+}
+
+.search-label {
+  text-align: left;
+    
+}
+
 /*
 * main
 */
