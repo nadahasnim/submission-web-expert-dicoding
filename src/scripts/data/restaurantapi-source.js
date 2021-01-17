@@ -1,4 +1,5 @@
 import API_ENDPOINT from '../globals/api-endpoint';
+import ToastInitiator from '../utils/toast-initiator';
 
 class RestaurantApiSource {
   static async listRestaurants() {
@@ -34,6 +35,11 @@ class RestaurantApiSource {
       const responseJson = await response.json();
       return responseJson;
     } catch (e) {
+      console.log('terjadi error post');
+      ToastInitiator.init(
+        document.querySelector('#app'),
+        'Tidak dapat mengirim review. Harap periksa koneksi anda.',
+      );
       return e;
     }
   }

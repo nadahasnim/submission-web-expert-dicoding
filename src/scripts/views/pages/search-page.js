@@ -1,10 +1,11 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import LoadingIndicator from '../../utils/loading-indicator-initiator';
 import SearchBoxInitiator from '../../utils/search-box-initiator';
-import { createRestaurantItemTemplate } from '../templates/template-creator';
+import { createRestaurantItemTemplate, create404Error, createNetworkError } from '../templates/template-creator';
 
 const SearchPage = {
   async render() {
@@ -41,24 +42,38 @@ const SearchPage = {
   async afterRender() {
     // Fungsi ini akan dipanggil setelah render()
     const content = document.querySelector('.content');
-    LoadingIndicator.init(content);
-    const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurants = await RestaurantApiSource.searchRestaurant(url.id);
-    const postContainer = document.querySelector('#posts');
 
-    const searchTitle = document.querySelector('.search_label');
-    searchTitle.innerHTML = `Search results for "${url.id}", found ${restaurants.length} item`;
+    try {
+      LoadingIndicator.init(content);
+      const url = UrlParser.parseActiveUrlWithoutCombiner();
+      const restaurants = await RestaurantApiSource.searchRestaurant(url.id);
+      const postContainer = document.querySelector('#posts');
 
-    restaurants.forEach((restaurant) => {
-      postContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+      const searchTitle = document.querySelector('.search_label');
+      searchTitle.innerHTML = `Search results for "${url.id}", found ${restaurants.length} item`;
 
-    SearchBoxInitiator.init({
-      searchBox: document.querySelector('#searchRestaurant'),
-      searchButton: document.querySelector('#searchButton'),
-    });
+      restaurants.forEach((restaurant) => {
+        postContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
 
-    LoadingIndicator.removeLoading();
+      SearchBoxInitiator.init({
+        searchBox: document.querySelector('#searchRestaurant'),
+        searchButton: document.querySelector('#searchButton'),
+      });
+
+      LoadingIndicator.removeLoading();
+    } catch (error) {
+      if (error == 'TypeError: Failed to fetch') {
+        console.log('error caching');
+        content.innerHTML = createNetworkError();
+      } else {
+        console.log('error 404');
+        content.innerHTML = create404Error();
+      }
+      console.log(error);
+
+      LoadingIndicator.removeLoading();
+    }
   },
 
 };

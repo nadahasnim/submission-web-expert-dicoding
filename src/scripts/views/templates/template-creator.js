@@ -4,7 +4,7 @@ import SummaryHelper from '../../utils/summary-helper';
 const createRestaurantDetailTemplate = (restaurant) => `
   <article class="detail-content">
     <div class="detail-head">
-      <img alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}" />
+      <img crossorigin="anonymous" alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL_MEDIUM + restaurant.pictureId}" />
       <h2>${restaurant.name}</h2>              
     </div>
     <div class="detail-body">
@@ -67,7 +67,7 @@ const createRestaurantListItem = (restaurant) => {
   <div class="restaurant-item">
     <div class="restaurant-figure">
       <a href="#/detail/${restaurant.id}">
-        <img alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" />
+        <img crossorigin="anonymous" alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" />
       </a>
     </div>
     <div class="restaurant-aside-detail">
@@ -90,6 +90,7 @@ const createRestaurantItemTemplate = (restaurant) => {
   return `
       <article class="post-item">
         <img
+          crossorigin="anonymous"
           class="post-item__thumbnail"
           src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}"
           alt="${restaurant.name}"
@@ -116,7 +117,7 @@ const createHeadlineItemTemplate = (restaurant) => {
 
   return `
     <figure class="headline__figure">
-      <img src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" alt="${restaurant.name}" />
+      <img crossorigin="anonymous" src="${CONFIG.BASE_IMAGE_URL_SMALL + restaurant.pictureId}" alt="${restaurant.name}" />
       <figcaption>
         Rekomendasi Restoran Untuk Anda: ${restaurant.name}
       </figcaption>
@@ -151,7 +152,16 @@ const create404Error = () => `
   </div>
 `;
 
+const createNetworkError = () => `
+  <div class="error-container">
+    <h2 class="error-text">Error Occured</h2>
+    <p>Please check your connection and try again.</p>
+    <a class="back-to-home" href="#/home" aria-label="back-to-home">Back to Home</a>
+  </div>
+`;
+
 export {
+  createNetworkError,
   create404Error,
   createRestaurantListAside,
   createRestaurantListItem,

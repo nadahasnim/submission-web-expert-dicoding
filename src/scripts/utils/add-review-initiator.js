@@ -38,16 +38,20 @@ const AddReviewInitiator = {
       event.stopPropagation();
 
       if (this._inputName.value !== '' && this._inputReview.value !== '') {
-        const response = await RestaurantApiSource.sendReview({
-          id: this._id,
-          name: this._inputName.value,
-          review: this._inputReview.value,
-        });
+        try {
+          const response = await RestaurantApiSource.sendReview({
+            id: this._id,
+            name: this._inputName.value,
+            review: this._inputReview.value,
+          });
 
-        const newCustomerReviews = response.customerReviews;
-        this._reviews = newCustomerReviews;
+          const newCustomerReviews = response.customerReviews;
+          this._reviews = newCustomerReviews;
 
-        this._renderReviewList();
+          this._renderReviewList();
+        } catch (error) {
+          console.log('cant send review. network error');
+        }
       }
     });
   },

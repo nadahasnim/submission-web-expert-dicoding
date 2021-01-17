@@ -1,7 +1,10 @@
+/* eslint-disable eqeqeq */
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import LoadingIndicator from '../../utils/loading-indicator-initiator';
 import SearchBoxInitiator from '../../utils/search-box-initiator';
-import { createHeadlineItemTemplate, createRestaurantItemTemplate } from '../templates/template-creator';
+import {
+  createHeadlineItemTemplate, createRestaurantItemTemplate, createNetworkError, create404Error,
+} from '../templates/template-creator';
 
 const HomePage = {
   async render() {
@@ -48,24 +51,39 @@ const HomePage = {
   },
 
   async afterRender() {
-    const content = document.querySelector('.content');
-    LoadingIndicator.init(content);
-    const restaurants = await RestaurantApiSource.listRestaurants();
-    const headlineContainer = document.querySelector('#headline');
-    const postContainer = document.querySelector('#posts');
+    try {
+      const content = document.querySelector('.content');
+      LoadingIndicator.init(content);
+      const restaurants = await RestaurantApiSource.listRestaurants();
+      const headlineContainer = document.querySelector('#headline');
+      const postContainer = document.querySelector('#posts');
 
-    restaurants.forEach((restaurant) => {
-      postContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+      restaurants.forEach((restaurant) => {
+        postContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
 
-    headlineContainer.innerHTML = createHeadlineItemTemplate(restaurants[0]);
+      headlineContainer.innerHTML = createHeadlineItemTemplate(restaurants[0]);
 
-    SearchBoxInitiator.init({
-      searchBox: document.querySelector('#searchRestaurant'),
-      searchButton: document.querySelector('#searchButton'),
-    });
+      SearchBoxInitiator.init({
+        searchBox: document.querySelector('#searchRestaurant'),
+        searchButton: document.querySelector('#searchButton'),
+      });
+      LoadingIndicator.removeLoading();
+    } catch (error) {
+      // render detail
+      const detailContainer = document.querySelector('.content');
 
-    LoadingIndicator.removeLoading();
+      if (error == 'TypeError: Failed to fetch') {
+        console.log('error caching');
+        detailContainer.innerHTML = createNetworkError();
+      } else {
+        console.log('error 404');
+        detailContainer.innerHTML = create404Error();
+      }
+      console.log(error);
+
+      LoadingIndicator.removeLoading();
+    }
   },
 };
 

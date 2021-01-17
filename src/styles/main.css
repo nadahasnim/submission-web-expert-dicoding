@@ -782,3 +782,23 @@ a.back-to-home {
     -webkit-transform: scale(1.0);
   }
 }
+
+/* toast */
+
+.toast {
+  opacity: 0;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: white;
+  padding: 10px 15px;
+  background-color: salmon;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3);
+  transition: 0.3s ease-in-out;
+}
+
+.show-toast {
+  opacity: 1;
+}

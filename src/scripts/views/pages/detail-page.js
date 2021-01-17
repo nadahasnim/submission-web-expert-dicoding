@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import RestaurantApiSource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import AddReviewInitiator from '../../utils/add-review-initiator';
@@ -12,6 +13,7 @@ import {
   createRestaurantListAside,
   createRestaurantListItem,
   create404Error,
+  createNetworkError,
 } from '../templates/template-creator';
 
 const DetailPage = {
@@ -117,12 +119,21 @@ const DetailPage = {
     } catch (error) {
       // render detail
       const detailContainer = document.querySelector('.detail-container');
-      detailContainer.innerHTML = create404Error();
-
-      // render detail link error
       const detailLink = document.querySelector('#detailLink');
+
+      if (error == 'TypeError: Failed to fetch') {
+        console.log('error caching');
+        detailContainer.innerHTML = createNetworkError();
+      } else {
+        console.log('error 404');
+        detailContainer.innerHTML = create404Error();
+      }
+      console.log(error);
+      // render detail link error
       detailLink.href = '#/home';
-      detailLink.innerHTML = 'error 404 not found';
+      detailLink.innerHTML = 'Error';
+
+      LoadingIndicator.removeLoading();
     }
   },
 };
