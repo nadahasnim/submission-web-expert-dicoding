@@ -674,12 +674,15 @@ ul.breadcrumb li a:hover {
 }
 
 a.back-to-home {
+  margin-top: 10px;
   display: inline-block;
   vertical-align: middle;  
   padding: 10px 15px;
   min-width: 44px;
   min-height: 44px;
-  color: salmon;
+  color: white;
+  border-radius: 5px;
+  background-color: salmon;
   text-decoration: none;
 }
 
@@ -801,4 +804,39 @@ a.back-to-home {
 
 .show-toast {
   opacity: 1;
+}
+
+/* no restaurant */
+.no-restaurant {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.no-restaurant > h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.no-restaurant > p {
+  margin-top: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.no-restaurant > a {
+  display: inline-block;  
+  padding: 12px 16px;
+  border-radius: 5px;
+  background-color: #f0d800;
+  color: #424242;
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+.no-restaurant > a:hover {
+  background-color: #dfcc03;
 }

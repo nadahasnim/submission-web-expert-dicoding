@@ -107,12 +107,13 @@ const DetailPage = {
 
       LikeButtonInitiator.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
-        movie: {
+        restaurant: {
           id: restaurant.id,
-          title: restaurant.name,
-          overview: restaurant.description,
-          backdrop_path: restaurant.pictureId,
-          vote_average: restaurant.rating,
+          name: restaurant.name,
+          description: restaurant.description,
+          pictureId: restaurant.pictureId,
+          rating: restaurant.rating,
+          city: restaurant.city,
         },
       });
       LoadingIndicator.removeLoading();
