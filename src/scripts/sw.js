@@ -5,7 +5,7 @@ import CacheHelper from './utils/cache-helper';
 const { assets } = global.serviceWorkerOption;
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(CacheHelper.cachingAppShell([...assets, './']));
+  event.waitUntil(CacheHelper.cachingAppShell([...assets, './', 'https://fonts.googleapis.com/css2?family=Open+Sans&family=Yellowtail&display=swap']));
 });
 
 self.addEventListener('activate', (event) => {

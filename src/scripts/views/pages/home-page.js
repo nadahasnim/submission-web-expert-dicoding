@@ -51,6 +51,8 @@ const HomePage = {
   },
 
   async afterRender() {
+    // set hero image
+    document.querySelector('.hero').style.backgroundImage = "url('./images/heros/hero-image_1.jpg')";
     try {
       const content = document.querySelector('.content');
       LoadingIndicator.init(content);
